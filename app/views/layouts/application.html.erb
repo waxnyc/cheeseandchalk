@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CheeseandChalk</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+
+    <header class="top-bar">
+      <h4>
+        <%= link_to "Cheese & Chalk", root_path %>
+        <% if signed_in? %>
+          <%= link_to "Sign out", session_path, method: :delete %>
+          Welcome <%= current_user.email %>
+          <% if current_user.admin? %>
+            You're an Admin!
+          <% end %>
+        <% else %>
+          <%= link_to "Sign In", new_session_path %>
+          <%= link_to "Sign Up", new_user_path %>
+        <% end %>
+      </h4>
+    </header>
+
+    <%= yield %>
+
+  </body>
+</html>

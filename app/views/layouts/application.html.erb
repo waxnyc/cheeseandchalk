@@ -12,12 +12,9 @@
       <h4>
         <%= link_to "Cheese & Chalk", root_path %>
         <% if signed_in? %>
-          <%= link_to "Sign out", session_path, method: :delete %>
           Welcome <%= current_user.email %>
-          <% if current_user.admin? %>
-            You're an Admin!
-          <% end %>
-        <% else %>
+          <%= link_to "Sign out", session_path, method: :delete %>
+          <% else %>
           <%= link_to "Sign In", new_session_path %>
           <%= link_to "Sign Up", new_user_path %>
         <% end %>

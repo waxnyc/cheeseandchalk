@@ -1,0 +1,12 @@
+<h2>Add A Restaurant to your Queue</h2>
+
+<%= form_for @restaurant do |form| %>
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+  
+  <div>
+    <%= form.submit "Add Restaurant" %>
+  </div>
+<% end %>

@@ -1,4 +1,7 @@
-<%= form_for :session, url: session_path do |form| %>
+<div>
+  <h3>Already Registered? Sign In!</h3>
+  <%= form_for :session, url: session_path do |form| %>
+</div>
   <div>
     <%= form.label :email %>
     <%= form.email_field :email %>
@@ -8,6 +11,6 @@
     <%= form.password_field :password %>
   </div>
   <div>
-    <%= form.submit "Sign in" %>
+    <%= form.submit "Sign In" %>
   </div>
 <% end %>

@@ -7,8 +7,8 @@ class SessionsController < ApplicationController
   def create
     user = authenticate_session(session_params)
 
-    if sign_in(user)
-      redirect_to root_path
+    if sign_in(user) 
+      redirect_to restaurants_path
     else
       render :new
     end

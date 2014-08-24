@@ -1,7 +1,7 @@
 <h2>Add A Restaurant to your Queue</h2>
 
 <%= form_for @restaurant do |form| %>
-  <%= render "partials/error", target: @restaurant %>
+  <%= render "error", target: @restaurant %>
   
   <div>
     <%= form.label :name %>

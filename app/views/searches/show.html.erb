@@ -1,9 +1,3 @@
-<h2>My To Dine List</h2>
-
-<% if signed_in? && current_user %>
-  <%= link_to "Add a Restaurant ", new_restaurant_path %>
-<% end %>
-
 <div>
   <ul>
     <% @restaurants.each do |restaurant| %>
@@ -11,3 +5,4 @@
     <% end %>
   </ul>
 </div>
+

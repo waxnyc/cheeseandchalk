@@ -1,29 +1,33 @@
 class CommentsController < ApplicationController
-  def new
+  def index
+    @comment = Comment.all
+  end
+
+    def new
     @restaurant = find_restaurant
-    @user = find_user
+    @user = current_user
     @comment = Comment.new
   end
 
   def create
     @restaurant = find_restaurant
-    @comment = @restaurant.build_comment(comment_params)
+    @comment = Comment.new
 
-    if @comment.save
-      redirect_to @restaurant.name 
+    if @restaurant.comments.build(comment_params)
+      redirect_to @restaurant
     else
       render :new
     end
   end
 
   def show
-    @comments = find_comment
+    @comment = find_comment
   end
 
   private
 
   def comment_params
-    params.require(:content).permit(:text)
+    params.require(:comment).permit(:content)
   end
 
   def find_comment
@@ -31,7 +35,7 @@ class CommentsController < ApplicationController
   end
 
   def find_restaurant
-    Restaurant.find(params[:id])
+    Restaurant.find(params[:restaurant_id])
   end
 
   def find_user

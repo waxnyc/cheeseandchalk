@@ -4,7 +4,9 @@ Rails.application.routes.draw do
 
   resource :session, only: [:new, :create, :destroy]
   resource :search, only: [:show]
-  resources :comments, only: [:new, :show, :create]
   resources :users, only: [:new, :create]
-  resources :restaurants, only: [:new, :create, :show, :index] 
+  
+  resources :restaurants, only: [:new, :create, :show, :index] do 
+    resources :comments, only: [:new, :show, :create, :index]
+  end
 end

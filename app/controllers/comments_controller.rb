@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
     @comment = Comment.all
   end
 
-    def new
+  def new
     @restaurant = find_restaurant
     @user = current_user
     @comment = Comment.new

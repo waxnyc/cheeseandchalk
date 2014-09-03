@@ -1,1 +1,7 @@
-<%= render @comment.content %>
+<h2>My Restaurant Comments</h2>
+
+<%= form_for(@comment) do |form| %>
+  <%= form.text_field :content %>
+  <%= form.submit "Comment" %>
+<% end %>
+  

@@ -1,7 +1,9 @@
  class UsersController < ApplicationController
   skip_before_action :require_login, only: [:new, :create]
 
-  def index
+  def show
+    @user = User.find(params[:id])
+    @comments = @user.comments  
   end
 
   def new

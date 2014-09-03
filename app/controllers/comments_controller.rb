@@ -11,17 +11,13 @@ class CommentsController < ApplicationController
 
   def create
     @restaurant = find_restaurant
-    @comment = Comment.new
+    @comment = @restaurant.comments.build(comment_params)
 
-    if @restaurant.comments.build(comment_params)
+    if @comment.save
       redirect_to @restaurant
     else
       render :new
     end
-  end
-
-  def show
-    @comment = find_comment
   end
 
   private

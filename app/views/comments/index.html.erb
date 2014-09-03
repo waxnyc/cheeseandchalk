@@ -1,0 +1,13 @@
+<h2>My Comments</h2>
+
+<% if signed_in? && current_user %>
+  <%= link_to "Add a Comment ", new_restaurant_comment_path(comment) %>
+<% end %>
+
+<div>
+  <ul>
+    <% @comments.each do |comment| %>
+      <li><%= link_to comment.content, comment %></li>
+    <% end %>
+  </ul>
+</div>

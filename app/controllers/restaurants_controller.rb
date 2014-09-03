@@ -1,4 +1,6 @@
 class RestaurantsController < ApplicationController
+  skip_before_action :require_login, only: [:show]
+
   def index
     @restaurants = Restaurant.all 
   end
@@ -8,7 +10,8 @@ class RestaurantsController < ApplicationController
   end
 
   def create
-    @restaurant = Restaurant.new(restaurant_params)
+    @restaurant = current_user.comments.new(restaurant_params)
+
     if @restaurant.save
       redirect_to restaurants_path
     else 
@@ -18,6 +21,7 @@ class RestaurantsController < ApplicationController
 
   def show
     @restaurant = Restaurant.find(params[:id])
+    @comments = @restaurant.comments
   end
 
   private
